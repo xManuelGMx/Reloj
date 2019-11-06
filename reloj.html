@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reloj animado</title>
+    <style>
+        span#reloj::after {
+            /*Centro*/
+            content: '.';
+            font-size: 200px;
+            position: absolute;
+            left: 178px;
+            top: 35px;
+            z-index: 3;
+        }
+        
+        span#reloj::before {
+            /*Segundero*/
+            content: '|';
+            font-size: 190px;
+            position: absolute;
+            /*transform: translate(135%,84%);*/
+            left: 184px;
+            bottom: 210px;
+            transform-origin: bottom;
+            color: yellow;
+            animation: reloj 60s steps(60) infinite normal;
+            z-index: 2;
+        }
+        
+        span#minutero {
+            position: absolute;
+            left: 184px;
+            bottom: 210px;
+            transform-origin: bottom;
+            font-size: 190px;
+            color: blue;
+            z-index: 1;
+            animation: reloj 3600s steps(60) infinite normal;
+            transform: scale(1, 0.8);
+        }
+        
+        span#horario {
+            position: absolute;
+            left: 184px;
+            bottom: 210px;
+            transform-origin: bottom;
+            font-size: 190px;
+            color: red;
+            -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+            z-index: 0;
+            animation: reloj 216000s steps(60) infinite normal;
+        }
+        
+        span {
+            position: absolute;
+        }
+        
+        @keyframes reloj {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /*
+        span#dia {
+            width: 60px;
+            border: greenyellow;
+            border-style: double;
+        }
+        
+        span#dia::after {
+            content: '';
+            animation: dia 12s infinite normal;
+        }
+        */
+        
+        @keyframes dia {
+            0% {
+                content: 'Su';
+            }
+            16.7% {
+                content: 'Mo';
+            }
+            33.3% {
+                content: 'Tu';
+            }
+            50% {
+                content: 'We';
+            }
+            66.7% {
+                content: 'Th';
+            }
+            83.3% {
+                content: 'Fr';
+            }
+            100% {
+                content: 'Sa';
+            }
+        }
+        /*Caja que muestre el dia, hora y minutos*/
+    </style>
+</head>
+
+<body>
+    <span id="reloj">
+        <img src="https://cssanimation.rocks/images/posts/clocks/ios_clock.svg" alt="Reloj" width="400px">
+        <span id="minutero">|</span>
+    <span id="horario">|</span>
+    <!-- <span id="dia">Dia: </span> -->
+    </span>
+</body>
+
+</html>
